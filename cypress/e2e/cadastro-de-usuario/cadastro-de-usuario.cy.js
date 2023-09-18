@@ -1,14 +1,17 @@
+import {generateEmail} from "/home/melissa/AutomacaoAvanti/utils/generate-inputs.js"
+import '/home/melissa/AutomacaoAvanti/pages/registerPage/register-page.js'
+
 describe('Cenário Cadastro de Usuários', () => {
   
   beforeEach(() =>{
     cy.visit('https://www.automationexercise.com/');
   })
   
-  it('Validar Cadastro de Usuário com dados válidos', () => {
-    cy.get('a[href="/login"]').contains(' Signup / Login').click();
-    cy.get('input[data-qa="signup-name"]').type('Teste');
-    cy.get('button[data-qa="signup-button"]').type('email-teste@gmail.com');
-    cy.get('button[data-qa="signup-button"]').click();
+  it.only('Validar Cadastro de Usuário com dados válidos', () => {
+    cy.clickSignupPage();
+    cy.typeName('Teste');
+    cy.typeEmail(generateEmail());
+    cy.clickSignupButton();
   })
 
   it('Validar Preenchimento Formulário de registro', () => {
@@ -17,6 +20,7 @@ describe('Cenário Cadastro de Usuários', () => {
 
   it('Validar Cadastro de Usuário com dados inválidos', () => {
     cy.visit('https://example.cypress.io')
+    // EMAIL JÁ CADASTRADO: teste-avanti@gmail.com
   })
 
 
