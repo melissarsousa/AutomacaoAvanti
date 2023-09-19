@@ -1,4 +1,5 @@
 require('@cypress/xpath');
+import '/home/melissa/AutomacaoAvanti/pages/registerPage/register-page.js'
 
 describe("Cenário 1 - Login de Usuário ", () => {
     
@@ -7,11 +8,8 @@ describe("Cenário 1 - Login de Usuário ", () => {
       })
     
     it("Fazer login com dados válidos", () => {
-        // Abre o navegador e navega para a URL
-        cy.visit("http://automationexercise.com");
-
         // Clica no botão 'Inscrição / Login'
-        cy.xpath("//a[contains(text(),'Signup / Login')]").click();
+        cy.clickSignupPage();
 
         // Verifica se o texto 'Faça login na sua conta' é visível
         cy.xpath("(//div[@class='login-form']//input)[2]").should("be.visible");
@@ -29,7 +27,7 @@ describe("Cenário 1 - Login de Usuário ", () => {
 
     it("Fazer login com dados inválidos", () => {
         // Clica no botão 'Inscrição / Login'
-      cy.xpath("//a[contains(text(),'Signup / Login')]").click();
+        cy.clickSignupPage();
   
       // Verifica se o texto 'Faça login na sua conta' é visível
       cy.xpath("(//div[@class='login-form']//input)[2]").should("be.visible");
