@@ -13,3 +13,8 @@ Cypress.Commands.add('typeEmail', (registerEmail) => {
 Cypress.Commands.add('clickSignupButton', () => {
     cy.get('button[data-qa="signup-button"]').click();
 });
+
+Cypress.Commands.add('confirmSignupPage', (element, text) => {
+    cy.get(element).contains(text);
+});
+
