@@ -23,13 +23,14 @@ describe('Cenário 5 - Cadastro de Usuários', () => {
     cy.clickSignupPage();
     cy.confirmSignupPage('div[class="signup-form"]', 'New User Signup!');
     cy.typeName('Teste');
-    cy.typeEmail(generateEmail());
+    const randomEmailSignup = generateEmail();
+    cy.typeEmail(randomEmailSignup);
     cy.clickSignupButton();
 
     // Página de formulário de cadastro
     cy.confirmSignupPage('div[class="login-form"]', 'Enter Account Information');
     cy.get('input[id="name"]').invoke('val').should('eq', 'Teste');
-    //cy.get('input[id="email"]').invoke('val').should('eq', 'melissateste@gmail.com');
+    cy.get('input[id="email"]').invoke('val').should('eq', randomEmailSignup);
     cy.get('input[id="password"]').type('12345678');
     cy.get('select[id="days"]').select('1').invoke('val');
     cy.get('select[id="months"]').select('January').invoke('val');
