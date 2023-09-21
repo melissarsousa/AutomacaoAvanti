@@ -29,23 +29,23 @@ describe('Cenário 5 - Cadastro de Usuários', () => {
 
     // Página de formulário de cadastro
     cy.confirmSignupPage('div[class="login-form"]', 'Enter Account Information');
-    cy.get('input[id="name"]').invoke('val').should('eq', 'Teste');
-    cy.get('input[id="email"]').invoke('val').should('eq', randomEmailSignup);
-    cy.get('input[id="password"]').type('12345678');
-    cy.get('select[id="days"]').select('1').invoke('val');
-    cy.get('select[id="months"]').select('January').invoke('val');
-    cy.get('select[id="years"]').select('2000').invoke('val');
-    cy.get('input[id="first_name"]').type('Melissa');
-    cy.get('input[id="last_name"]').type('Teste');
-    cy.get('input[id="address1"]').type('Teste');
-    cy.get('select[id="country"]').invoke('val').should('eq', 'India');
-    cy.get('input[id="state"]').type('Teste');
-    cy.get('input[id="city"]').type('Teste');
-    cy.get('input[id="zipcode"]').type('123456');
-    cy.get('input[id="mobile_number"]').type('11111111');
+    cy.confirmValElements('input[id="name"]', 'Teste');
+    cy.confirmValElements('input[id="email"]', randomEmailSignup);
+    cy.typePassword('12345678');
+    cy.inputSelectFields('select[id="days"]', '1');
+    cy.inputSelectFields('select[id="months"]', 'January');
+    cy.inputSelectFields('select[id="years"]', '2000');
+    cy.typeFirstName('Melissa');
+    cy.typeLastName('Teste');
+    cy.typeAdress1('Teste');
+    cy.inputSelectFields('select[id="country"]', 'India');
+    cy.typeState('Teste');
+    cy.typeCity('Teste');
+    cy.typeZipcode('123456');
+    cy.typeMobileNumber('11111111');
     
-    cy.get('button[class="btn btn-default"]').contains('Create Account').click();
-    cy.get('div[class="col-sm-9 col-sm-offset-1"]').contains('Account Created!');
+    cy.clickCreateAccountButton();
+    cy.confirmAccountCreated();
 
   })
 
