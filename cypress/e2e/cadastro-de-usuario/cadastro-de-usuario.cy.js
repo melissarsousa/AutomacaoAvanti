@@ -18,7 +18,7 @@ describe('Cenário 5 - Cadastro de Usuários', () => {
     cy.confirmSignupPage('div[class="login-form"]', 'Enter Account Information');
   })
 
-  it.only('Validar Preenchimento Formulário de registro', () => {
+  it('Validar Preenchimento Formulário de registro', () => {
     // Página inicial de cadastro
     cy.clickSignupPage();
     cy.confirmSignupPage('div[class="signup-form"]', 'New User Signup!');
